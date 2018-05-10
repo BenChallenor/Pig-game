@@ -8,14 +8,20 @@ GAME RULES:
 - The first player to reach 100 points on GLOBAL score wins the game
 
 */
- var scores, roundScore, activePlayer;
+var scores, roundScore, activePlayer;
 
- scores = [0,0];
- roundScore = 0;
- activePlayer = 0;
+scores = [0, 0];
+roundScore = 0;
+activePlayer = 0;
 
 document.querySelector('.dice').style.display = "none";
 // hides dice when page loads
+
+document.getElementById('score-0').textContent = 0;
+document.getElementById('score-1').textContent = 0;
+document.getElementById('current-0').textContent = 0;
+document.getElementById('current-1').textContent = 0;
+// sets scores to 0
 
 document.querySelector('.btn-roll').addEventListener("click", function() {
   // anonymous function
@@ -23,6 +29,23 @@ document.querySelector('.btn-roll').addEventListener("click", function() {
   var diceDOM = document.querySelector(".dice");
   diceDOM.style.display = "Block";
   diceDOM.src = "images/dice-" + dice + ".png";
+
+  if (dice !== 1) {
+    roundScore += dice;
+    document.querySelector('#current-' + activePlayer).textContent = roundScore;
+  } else {
+    // next player
+    activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+    roundScore = 0;
+
+    document.getElementById("current-0").textContent = "0";
+    document.getElementById("current-1").textContent = "0";
+
+    document.querySelector(".player-0-panel").classList.toggle('active');
+    document.querySelector(".player-1-panel").classList.toggle('active');
+
+    document.querySelector('.dice').style.display = "none";
+  }
 });
 
- // document.querySelector('#current-' + activePlayer).textContent = dice;
+// document.querySelector('#current-' + activePlayer).textContent = dice;
