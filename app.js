@@ -14,6 +14,15 @@ GAME RULES:
  roundScore = 0;
  activePlayer = 0;
 
- dice = Math.floor(Math.random() * 6) + 1;
+document.querySelector('.dice').style.display = "none";
+// hides dice when page loads
 
- document.querySelector('#current-' + activePlayer).textContent = dice;
+document.querySelector('.btn-roll').addEventListener("click", function() {
+  // anonymous function
+  var dice = Math.floor(Math.random() * 6) + 1;
+  var diceDOM = document.querySelector(".dice");
+  diceDOM.style.display = "Block";
+  diceDOM.src = "images/dice-" + dice + ".png";
+});
+
+ // document.querySelector('#current-' + activePlayer).textContent = dice;
