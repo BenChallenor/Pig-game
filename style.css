@@ -170,3 +170,20 @@ i {
   font-weight: 300;
   color: #EB4D4D;
 }
+
+.final-score {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 520px;
+  font-size: 18px;
+  font-family: "Lato";
+  text-align: center;
+  padding: 10px;
+  text-transform: uppercase;
+  color: #555;
+}
+
+.final-score:focus {
+  outline: none;
+}
